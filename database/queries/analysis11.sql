@@ -7,13 +7,13 @@ SELECT
     c.nome as cliente,
     c.telefone as telefone_cliente,
     v.placa,
-    CONCAT(v.marca, ' ', v.modelo, ' ', v.ano) as veiculo,
+    v.marca || ' ' || v.modelo || ' ' || v.ano as veiculo,
     m.nome as mecanico,
     m.especialidade,
     os.descricao,
     os.valor_total,
-    GROUP_CONCAT(DISTINCT s.nome SEPARATOR ', ') as servicos_realizados,
-    GROUP_CONCAT(DISTINCT CONCAT(p.nome, ' (', osp.quantidade, 'x)') SEPARATOR ', ') as pecas_utilizadas
+    STRING_AGG(DISTINCT s.nome, ', ') as servicos_realizados,
+    STRING_AGG(DISTINCT p.nome || ' (' || osp.quantidade || 'x)', ', ') as pecas_utilizadas
 FROM ORDEM_SERVICO os
 JOIN VEICULO v ON os.id_veiculo = v.id_veiculo
 JOIN CLIENTE c ON v.id_cliente = c.id_cliente
