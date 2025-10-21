@@ -1,5 +1,5 @@
 -- View: Resumo de Clientes
-CREATE VIEW vw_resumo_clientes AS
+CREATE OR REPLACE VIEW vw_resumo_clientes AS
 SELECT 
     c.id_cliente,
     c.nome,
@@ -15,7 +15,7 @@ LEFT JOIN ORDEM_SERVICO os ON v.id_veiculo = os.id_veiculo
 GROUP BY c.id_cliente, c.nome, c.tipo_cliente, c.telefone;
 
 -- View: Dashboard de Mecânicos
-CREATE VIEW vw_dashboard_mecanicos AS
+CREATE OR REPLACE VIEW vw_dashboard_mecanicos AS
 SELECT 
     m.id_mecanico,
     m.nome,
@@ -33,7 +33,7 @@ LEFT JOIN ORDEM_SERVICO os ON m.id_mecanico = os.id_mecanico
 GROUP BY m.id_mecanico, m.nome, m.especialidade, m.salario;
 
 -- View: Estoque Crítico
-CREATE VIEW vw_estoque_critico AS
+CREATE OR REPLACE VIEW vw_estoque_critico AS
 SELECT 
     p.nome as peca,
     p.estoque_atual,
