@@ -1,5 +1,5 @@
 CREATE TABLE PECA (
-    id_peca INT AUTO_INCREMENT PRIMARY KEY,
+    id_peca SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
     preco_unitario DECIMAL(10,2) NOT NULL,
