@@ -13,7 +13,7 @@ SELECT
     os.descricao,
     os.valor_total,
     STRING_AGG(DISTINCT s.nome, ', ') as servicos_realizados,
-    STRING_AGG(DISTINCT p.nome || ' (' || osp.quantidade || 'x)', ', ') as pecas_utilizadas
+    STRING_AGG(DISTINCT p.nome || ' (' || osp.quantidade::TEXT || 'x)', ', ') as pecas_utilizadas
 FROM ORDEM_SERVICO os
 JOIN VEICULO v ON os.id_veiculo = v.id_veiculo
 JOIN CLIENTE c ON v.id_cliente = c.id_cliente
