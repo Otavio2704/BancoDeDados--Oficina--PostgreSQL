@@ -1,8 +1,8 @@
 CREATE TABLE ORDEM_SERVICO (
-    id_ordem INT AUTO_INCREMENT PRIMARY KEY,
-    data_entrada DATETIME NOT NULL,
-    data_saida DATETIME,
-    status ENUM('ABERTA', 'EM_ANDAMENTO', 'FINALIZADA', 'CANCELADA') DEFAULT 'ABERTA',
+    id_ordem SERIAL PRIMARY KEY,
+    data_entrada TIMESTAMP NOT NULL,
+    data_saida TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'ABERTA' CHECK (status IN ('ABERTA', 'EM_ANDAMENTO', 'FINALIZADA', 'CANCELADA')),
     valor_total DECIMAL(10,2) DEFAULT 0.00,
     descricao TEXT,
     id_veiculo INT,
