@@ -1,0 +1,11 @@
+CREATE TABLE VEICULO (
+    id_veiculo INT AUTO_INCREMENT PRIMARY KEY,
+    placa VARCHAR(8) UNIQUE NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    ano INT NOT NULL,
+    cor VARCHAR(30),
+    id_cliente INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id_cliente)
+);
